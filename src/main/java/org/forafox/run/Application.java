@@ -46,7 +46,7 @@ public class Application {
      */
     CommandInvoker commandInvoker;
     /**
-     * хранит ссылку на объект, производящий чтение полей класса Dragon
+     * хранит ссылку на объект, производящий чтение полей класса LabWork
      */
     LabWorkFieldsReader labWorkFieldsReader;
 

@@ -72,7 +72,7 @@ public class ExecuteScriptCommand implements CommandWithArguments {
             FileInputStream fileInputStream = new FileInputStream(scriptPath);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             Scanner scanner = new Scanner(inputStreamReader);
-            userIO = new UserIO(scanner);//Зачем новый сканер?
+            userIO = new UserIO(scanner);
             CommandInvoker commandInvoker = new CommandInvoker(collectionManager, userIO,labWorkFieldsReader, script);
 
             while (scanner.hasNext()) {

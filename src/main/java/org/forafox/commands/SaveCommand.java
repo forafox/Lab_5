@@ -1,6 +1,7 @@
 package org.forafox.commands;
 
 import org.forafox.collection.CollectionManager;
+import org.forafox.collection.LabWork;
 
 /**
  * @author Karabanov Andrey

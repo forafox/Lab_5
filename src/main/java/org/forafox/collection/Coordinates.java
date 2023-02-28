@@ -24,7 +24,7 @@ public class Coordinates {
      * @param x значение координаты x
      * @param y значение координаты y
      */
-    public Coordinates(Long x, double y) {
+    public Coordinates(long x, double y) {
         this.x = x;
         this.y = y;
     }

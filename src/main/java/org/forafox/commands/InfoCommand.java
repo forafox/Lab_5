@@ -25,7 +25,7 @@ public class InfoCommand implements Command{
         this.collectionManager=collectionManager;
     }
     /**
-     * Метод, исполняющий команду. Выводит описание коллекции TreeMap экземпляров Dragon.
+     * Метод, исполняющий команду. Выводит описание коллекции TreeMap экземпляров LabWork.
      */
     @Override
     public void execute() {

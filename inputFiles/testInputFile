@@ -2,8 +2,8 @@
 <treemap>
 	<LabWork>
 		<name>Lab4</name>
-		<coordinate_x>20.0</coordinate_x>
-		<coordinate_y>11</coordinate_y>
+		<coordinate_x>20</coordinate_x>
+		<coordinate_y>11.0</coordinate_y>
 		<creation_date>2017-12-03T10:15:30+01:00</creation_date>
 		<minimalPoint>25</minimalPoint>
 		<maximumPoint>20.0</maximumPoint>
@@ -17,25 +17,25 @@
 		<LocationName>Novosibirsk</LocationName>
 	</LabWork>
 	<LabWork>
-		<name>Lab6</name>
-		<coordinate_x>20.0</coordinate_x>
-		<coordinate_y>11</coordinate_y>
-		<creation_date>2017-12-03T10:15:30+01:00</creation_date>
-		<minimalPoint>10</minimalPoint>
-		<maximumPoint>20.0</maximumPoint>
-		<personalQualitiesMaximum>15</personalQualitiesMaximum>
-		<difficulty>VERY_HARD</difficulty>
-		<PersonName>Andrey</PersonName>
-		<PersonHeight>180.0</PersonHeight>
-		<PersonPassportID>12345</PersonPassportID>
-		<LocationX>90</LocationX>
-		<LocationY>90.5</LocationY>
-		<LocationName>Tomsk</LocationName>
+		<name>2</name>
+		<coordinate_x>2</coordinate_x>
+		<coordinate_y>2.0</coordinate_y>
+		<creation_date>2023-03-01T01:17:16.499484700Z</creation_date>
+		<minimalPoint>2</minimalPoint>
+		<maximumPoint>2.0</maximumPoint>
+		<personalQualitiesMaximum>2</personalQualitiesMaximum>
+		<difficulty>EASY</difficulty>
+		<PersonName>2</PersonName>
+		<PersonHeight>2.0</PersonHeight>
+		<PersonPassportID>2</PersonPassportID>
+		<LocationX>2</LocationX>
+		<LocationY>2.0</LocationY>
+		<LocationName>2</LocationName>
 	</LabWork>
 	<LabWork>
 		<name>Lab7</name>
-		<coordinate_x>20.0</coordinate_x>
-		<coordinate_y>11</coordinate_y>
+		<coordinate_x>20</coordinate_x>
+		<coordinate_y>11.0</coordinate_y>
 		<creation_date>2017-12-03T10:15:30+01:00</creation_date>
 		<minimalPoint>7</minimalPoint>
 		<maximumPoint>20.0</maximumPoint>
@@ -50,8 +50,8 @@
 	</LabWork>
 	<LabWork>
 		<name>Lab10</name>
-		<coordinate_x>21.0</coordinate_x>
-		<coordinate_y>12</coordinate_y>
+		<coordinate_x>21</coordinate_x>
+		<coordinate_y>12.0</coordinate_y>
 		<creation_date>2018-12-03T10:15:30+01:00</creation_date>
 		<minimalPoint>26</minimalPoint>
 		<maximumPoint>21.0</maximumPoint>
@@ -63,5 +63,21 @@
 		<LocationX>181</LocationX>
 		<LocationY>182.0</LocationY>
 		<LocationName>Omsk</LocationName>
+	</LabWork>
+	<LabWork>
+		<name>Andrey Karabanov</name>
+		<coordinate_x>123</coordinate_x>
+		<coordinate_y>505.5</coordinate_y>
+		<creation_date>2023-02-28T21:30:53.344927500Z</creation_date>
+		<minimalPoint>99</minimalPoint>
+		<maximumPoint>101.0</maximumPoint>
+		<personalQualitiesMaximum>102</personalQualitiesMaximum>
+		<difficulty>VERY_EASY</difficulty>
+		<PersonName>Andrey Karabanov student</PersonName>
+		<PersonHeight>181.111</PersonHeight>
+		<PersonPassportID>1234567890</PersonPassportID>
+		<LocationX>800</LocationX>
+		<LocationY>808.8</LocationY>
+		<LocationName>Msk</LocationName>
 	</LabWork>
 </treemap>

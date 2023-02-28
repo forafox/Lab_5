@@ -62,16 +62,16 @@ public class InsertElementCommand implements CommandWithArguments{
         }
     }
     /**
-     * @param arguments Аргументы команды.
-     * @see CommandWithArguments
+     * @return Возвращает описание данной команды.
+     * @see Command
      */
     @Override
     public String getDescription() {
         return "добавляет элемент с указанным ключом в качестве атрибута";
     }
     /**
-     * @return Возвращает описание данной команды.
-     * @see Command
+     * @param commandArguments Аргументы команды.
+     * @see CommandWithArguments
      */
     @Override
     public void getCommandArguments(String[] commandArguments) {

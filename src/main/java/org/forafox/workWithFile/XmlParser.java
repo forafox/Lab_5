@@ -90,7 +90,7 @@ public class XmlParser {
         /**
          * Хранит поле personHeight объекта класса Person
          */
-        private float personHeight;
+        private Float personHeight;
         /**
          * Хранит поле personPassportID объекта класса Person
          */
@@ -140,40 +140,50 @@ public class XmlParser {
             information = information.replace("\n", "").trim();
             try {
                 if (!information.isEmpty()) {
-                    if (lastElementName.equals("name"))
-                        name = information;
-                    else if (lastElementName.equals("coordinate_x"))
-                        x = Long.parseLong(information);
-                    else if (lastElementName.equals("coordinate_y"))
-                        y = Double.parseDouble(information);
-                    else if (lastElementName.equals("creation_date"))
-                        creationDate = ZonedDateTime.parse(information);
-                    else if (lastElementName.equals("minimalPoint"))
-                        minimalPoint = Integer.parseInt(information);
-                    else if (lastElementName.equals("maximumPoint"))
-                        maximumPoint = Double.parseDouble(information);
-                    else if (lastElementName.equals("personalQualitiesMaximum"))
-                        personalQualitiesMaximum = personalQualitiesMaximum.valueOf(information);
-                    else if (lastElementName.equals("difficulty"))
-                        difficulty = difficulty.valueOf(information);
-
-                    else if (lastElementName.equals("PersonName"))
-                        personName=(information);
-
-                    else if (lastElementName.equals("PersonHeight"))
-                        personHeight = Float.parseFloat(information);
-
-                    else if (lastElementName.equals("PersonPassportID"))
-                        personPassportID = (information);
-
-                    else if (lastElementName.equals("LocationX"))
-                        locationX = Integer.parseInt(information);
-
-                    else if (lastElementName.equals("LocationY"))
-                        locationY = Float.parseFloat(information);
-
-                    else if (lastElementName.equals("LocationName"))
-                        locationName = (information);
+                    switch (lastElementName) {
+                        case "name":
+                            name = information;
+                            break;
+                        case "coordinate_x":
+                            x = Long.parseLong(information);
+                            break;
+                        case "coordinate_y":
+                            y = Double.parseDouble(information);
+                            break;
+                        case "creation_date":
+                            creationDate = ZonedDateTime.parse(information);
+                            break;
+                        case "minimalPoint":
+                            minimalPoint = Integer.parseInt(information);
+                            break;
+                        case "maximumPoint":
+                            maximumPoint = Double.parseDouble(information);
+                            break;
+                        case "personalQualitiesMaximum":
+                            personalQualitiesMaximum = personalQualitiesMaximum.valueOf(information);
+                            break;
+                        case "difficulty":
+                            difficulty = difficulty.valueOf(information);
+                            break;
+                        case "PersonName":
+                            personName = (information);
+                            break;
+                        case "PersonHeight":
+                            personHeight = Float.parseFloat(information);
+                            break;
+                        case "PersonPassportID":
+                            personPassportID = (information);
+                            break;
+                        case "LocationX":
+                            locationX = Integer.parseInt(information);
+                            break;
+                        case "LocationY":
+                            locationY = Float.parseFloat(information);
+                            break;
+                        case "LocationName":
+                            locationName = (information);
+                            break;
+                    }
 
 
                 }
@@ -196,11 +206,9 @@ public class XmlParser {
             if (qName.equals("LabWork")) {
                 if ((name != null && !name.isEmpty()) &&
                         (x != null && x>-985 ) &&
-                        (y != null ) && //?
                         (minimalPoint == null || minimalPoint > 0) &&
                         (maximumPoint != null && maximumPoint > 0) &&
                         (personalQualitiesMaximum == null || personalQualitiesMaximum>0) &&
-                        (difficulty == null || difficulty != null)&&
                         (personName != null && !personName.isEmpty()) &&
                         (personHeight >0) &&
                         (personPassportID != null && !personPassportID.isEmpty() && personPassportID.length()<=28) &&
@@ -221,20 +229,20 @@ public class XmlParser {
                     labWorks.add(labWork);
                 } else System.err.println("Указаны не все параметры, либо параметры не принадлежат допустимой ОДЗ");
 
-                 String name = null;
-                 Double x = null;
-                 Integer y = null;
-                 ZonedDateTime creationDate = null;
-                 Integer minimalPoint = null;
-                 Double maximumPoint = null;
-                 Integer personalQualitiesMaximum = null;
-                 Difficulty difficulty = null;
-                 String personName = null;
-                 Float personHeight = null;
-                 String personPassportID = null;
-                 Integer locationX = null;
-                 Float locationY = null;
-                 String locationName = null;
+                 name = null;
+                  x = null;
+                  y = null;
+                  creationDate = null;
+                  minimalPoint = null;
+                  maximumPoint = null;
+                  personalQualitiesMaximum = null;
+                  difficulty = null;
+                  personName = null;
+                  personHeight = null;
+                  personPassportID = null;
+                  locationX = null;
+                  locationY = null;
+                  locationName = null;
             }
         }
     }
@@ -242,7 +250,7 @@ public class XmlParser {
     /**
      * Метод, осуществляющий преобразование массива объектов в формат XML, представленный в виде строки
      *
-     * @param  labWorks объектов класса Dragon
+     * @param  labWorks объектов класса LabWork
      * @return строка, хранящая данные, представленные в формате XML
      */
     public String parseToXml(LabWork[] labWorks) {

@@ -30,16 +30,16 @@ public class LabWorkFieldsReader {
     /**
      * Метод, выводящий производящий чтение данных из консоли. Запрашивает ввод полей в строго определенном порядке.
      *
-     * @param id уникальный идентификатор объекта класса Dragon, который должен быть записан в качестве ключа в коллекцию
-     * @return возращает объект типа Dragon
+     * @param id уникальный идентификатор объекта класса LabWork, который должен быть записан в качестве ключа в коллекцию
+     * @return возращает объект типа LabWork
      */
     public LabWork read(Integer id) {
         String i = Instant.now().toString();
-        return new LabWork(id, readName(), readCoordinates(),ZonedDateTime.parse(i), readMinimalPoint(), readMaximumPoint(),
+        return new LabWork(id, readName(), readCoordinates(),ZonedDateTime.parse(i).plusHours(3), readMinimalPoint(), readMaximumPoint(),
                 readPersonalQualitiesMaximum(), readDifficulty(), readPerson());
     }
     /**
-     * Метод, производящий чтение поля name типа String объекта Dragon из потока, указанного в поле userIO. При некорректном вводе просит ввести поля заново.
+     * Метод, производящий чтение поля name типа String объекта LabWork из потока, указанного в поле userIO. При некорректном вводе просит ввести поля заново.
      *
      * @return значение поля name, уже проверенное на недопустимую ОДЗ.
      */
@@ -48,7 +48,7 @@ public class LabWorkFieldsReader {
         while(true){
             userIO.printCommandText("name (not null): ");
             str= userIO.readLine().trim();
-            if(str.equals("")) userIO.printCommandError("\nЗначение поля не может быть null или пустой строкой\n");
+            if(str.equals("") || str==null) userIO.printCommandError("\nЗначение поля не может быть null или пустой строкой\n");
             else return str;
         }
     }
@@ -72,18 +72,18 @@ public class LabWorkFieldsReader {
         while (true) {
             try {
 
-                userIO.printCommandText("coordinate_x (double & not null & x > -985): ");
+                userIO.printCommandText("coordinate_x (Long & x > -985): ");
                 String str=userIO.readLine().trim();
-                if(str.equals("")) x= Long.valueOf(0);
+                if(str.equals("") || str==null) x= Long.valueOf(0);
                 else {
                     x = Long.parseLong(str);
-                    if (x < -985) throw new ValidValuesRangeException();
+                    if (x <= -985) throw new ValidValuesRangeException();
                     else return x;
                 }
             } catch (ValidValuesRangeException ex) {
                 System.out.println("Координата x должна быть больше -985");
             } catch (NumberFormatException ex) {
-                System.err.println("Число должно быть типа Double и не null");
+                System.err.println("Число должно быть типа Long");
             }
         }
     }
@@ -96,32 +96,30 @@ public class LabWorkFieldsReader {
         double y;
         while (true) {
             try {
-                userIO.printCommandText("coordinate_y ");
+                userIO.printCommandText("coordinate_y (Double): ");
                 String str = userIO.readLine().trim();
-                if (str.equals("")) y = 0;
+                if (str.equals("") || str == null) y = 0;
                 else {
-                    y = Integer.parseInt(str);
-                    if (y >= 803) throw new ValidValuesRangeException();
+                    y = Double.parseDouble(str);
                 }
                 return y;
+                }catch(NumberFormatException ex){
+                    System.err.println("Число должно быть типа Double");
+                }
             }
-             catch (NumberFormatException ex) {
-                System.err.println("");
-            }
-        }
     }
     /**
      * Метод, производящий чтение поля minimalPoint типа int объекта LabWork из потока, указанного в поле userIO. При некорректном вводе просит ввести поле заново.
      *
      * @return значение поля minimalPoint, уже проверенное на недопустимую ОДЗ.
      */
-    public Integer readMinimalPoint(){
+    public int readMinimalPoint(){
         int minimalPoint;
         while (true){
         try {
             userIO.printCommandText("minimalPoint (Integer x > 0): ");
             String str=userIO.readLine().trim();
-            if(str.equals("")) minimalPoint=0;
+            if(str.equals("") || str==null) minimalPoint=0;
             else {
                 minimalPoint = Integer.parseInt(str);
                 if (minimalPoint <=0) throw new ValidValuesRangeException();
@@ -160,7 +158,7 @@ public class LabWorkFieldsReader {
      *
      * @return значение поля personalQualitiesMaximum, уже проверенное на недопустимую ОДЗ.
      */
-    public Integer readPersonalQualitiesMaximum(){
+    public int readPersonalQualitiesMaximum(){
         int personalQualitiesMaximum;
         while (true){
             try {
@@ -220,7 +218,7 @@ public class LabWorkFieldsReader {
         while(true){
             userIO.printCommandText("PersonName (not null and not empty): ");
             str= userIO.readLine().trim();
-            if(str.equals("")) userIO.printCommandError("\nЗначение поля не может быть null или пустой строкой\n");
+            if(str.equals("") || str==null) userIO.printCommandError("\nЗначение поля не может быть null или пустой строкой\n");
             else return str;
         }
     }
@@ -233,17 +231,18 @@ public class LabWorkFieldsReader {
         float height;
         while (true) {
             try {
-                userIO.printCommandText("height ");
+                userIO.printCommandText("height (Float && >0): ");
                 String str = userIO.readLine().trim();
-                if (str.equals("")) height = 0;
+                if (str.equals("") || str==null) height = 0;
                 else {
-                    height = Integer.parseInt(str);
+                    height = Float.parseFloat(str);
                     if (height <=0) throw new ValidValuesRangeException();
                 }
                 return height;
-            }
-            catch (NumberFormatException ex) {
-                System.err.println("");
+            }catch (ValidValuesRangeException ex) {
+                System.out.println("height должен быть больше 0");
+            }catch (NumberFormatException ex) {
+                System.err.println("Вводимое значение должно быть Float");
             }
         }
     }
@@ -257,14 +256,14 @@ public class LabWorkFieldsReader {
             try {
                 userIO.printCommandText("PersonPassportID (String & not null and not empty & length <=28): ");
                 String str=userIO.readLine().trim();
-                if(str.equals("") || str.length()>28) throw new ValidValuesRangeException();
+                if(str.equals("") || str==null || str.length()>28) throw new ValidValuesRangeException();
                 else {
                      return str;
                 }
             } catch (ValidValuesRangeException ex) {
                 System.out.println("PersonPassportID должна быть меньше 28 символов  и не пустой");
             } catch (NumberFormatException ex) {
-                System.err.println("-");
+                System.err.println("Вводимое значение должно быть String");
             }
         }
     }
@@ -281,15 +280,20 @@ public class LabWorkFieldsReader {
      *
      * @return значение поля locationCoordinateX, уже проверенное на недопустимую ОДЗ.
      */
-    public Integer readLocationCoordinateX() {
+    public int readLocationCoordinateX() {
         int x = 0;
         while (true) {
             try {
-                userIO.printCommandText("Location coordinate_x  ");
+                userIO.printCommandText("Location coordinate_x (int) : ");
                 String str = userIO.readLine().trim();
+                if (str.equals("") || str==null) x = 0;
+                else {
+                    x = Integer.parseInt(str);
+                    if (x <=0) throw new ValidValuesRangeException();
+                }
                 return x;
             }catch (NumberFormatException ex) {
-                System.err.println("-");
+                System.err.println("Вводимое значение должно быть int");
             }
         }
     }
@@ -302,11 +306,16 @@ public class LabWorkFieldsReader {
         float y = 0;
         while (true) {
             try {
-                userIO.printCommandText("Location coordinate_y  ");
+                userIO.printCommandText("Location coordinate_y (Float) :");
                 String str = userIO.readLine().trim();
+                if (str.equals("") || str==null) y = 0;
+                else {
+                    y = Float.parseFloat(str);
+                    if (y <=0) throw new ValidValuesRangeException();
+                }
                 return y;
             }catch (NumberFormatException ex) {
-                System.err.println("-");
+                System.err.println("Вводимое значение должно быть float");
             }
         }
     }
@@ -318,7 +327,7 @@ public class LabWorkFieldsReader {
     public String readLocationName(){
         String str;
         while(true){
-            userIO.printCommandText("LocationName (length<=669: ");
+            userIO.printCommandText("LocationName (length<=669): ");
             str= userIO.readLine().trim();
             if(str==null) str="";
             if(str.length()>669) userIO.printCommandError("\nЗначение поля не может быть null или пустой строкой\n");

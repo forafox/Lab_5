@@ -42,7 +42,7 @@ public class CollectionManager {
         System.out.println("Коллекция " + treeMap.getClass().getSimpleName());
         System.out.println("Тип элементов коллекции: " + LabWork.class.getSimpleName());
 
-        String pattern = "yyyy-MM-dd HH:mm:ss.SSS";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
         DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern(pattern);
         System.out.println("Время ининициализации коллекции: " + collectionInitialization.plusHours(3).format(europeanDateFormatter));
         System.out.println("Количество элементов в коллекции: " + treeMap.size());

@@ -34,7 +34,7 @@ public class Person {
     public Person(){
         name="Name";
         height=0;
-        passportID="12345";
+        passportID="";
         location = new Location();
     }
 
